@@ -6,7 +6,7 @@
 /*   By: cpieri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:38:43 by cpieri            #+#    #+#             */
-/*   Updated: 2019/06/10 11:39:15 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/06/10 15:37:15 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 
 void	*malloc(size_t size)
 {
-	return (NULL);
+	void	*new_alloc;
+
+	new_alloc = NULL;
+	(void)size;
+	return (new_alloc);
 }
