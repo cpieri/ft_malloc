@@ -6,7 +6,7 @@
 #    By: cpieri <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/10 15:37:21 by cpieri            #+#    #+#              #
-#    Updated: 2019/06/11 16:39:24 by cpieri           ###   ########.fr        #
+#    Updated: 2019/06/11 16:41:21 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,7 +99,7 @@ $(NAME):	echo $(OBJS)
 			@$(CC) $(SHARED) $(FLAGS) -o $(NAME) $(OBJS)
 			@echo "\n$(GREEN)$(NAME) is ready !$(NONE)"
 			@ln -s $(NAME) $(LINK_NAME)
-			@echo "$(GREEN)$(NAME) is linked in $(LINK_NAME)$(NONE)"
+			@echo "$(GREEN)$(NAME) is linked to $(LINK_NAME)$(NONE)"
 
 echo:
 			@echo "$(YELLOW)Start of Compilation...$(NONE)"
