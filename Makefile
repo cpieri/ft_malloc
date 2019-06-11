@@ -6,7 +6,7 @@
 #    By: cpieri <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/10 15:37:21 by cpieri            #+#    #+#              #
-#    Updated: 2019/06/11 16:01:03 by cpieri           ###   ########.fr        #
+#    Updated: 2019/06/11 16:39:24 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 # ***************************************** #
 
 ifeq ($(HOSTTYPE),)
-	HOSTTYPE = $(shell uname -m)_$(shell uname -s) 
+	HOSTTYPE = $(shell uname -m)_$(shell uname -s)
 endif
 
 NAME		=	libft_malloc_$(HOSTTYPE).so
@@ -85,6 +85,7 @@ YELLOW	=	\033[33m
 BLUE	=	\033[34m
 MAGENTA	=	\033[35m
 CYAN	=	\033[36m
+PINK	=	\033[38;5;206m
 
 # ***************************************** #
 #					Rules					#
@@ -94,9 +95,16 @@ CYAN	=	\033[36m
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
-			$(CC) $(SHARED) $(FLAGS) -o $(NAME) $(OBJS)
-			@echo "$(GREEN) $(NAME) is ready !$(NONE)"
+$(NAME):	echo $(OBJS)
+			@$(CC) $(SHARED) $(FLAGS) -o $(NAME) $(OBJS)
+			@echo "\n$(GREEN)$(NAME) is ready !$(NONE)"
+			@ln -s $(NAME) $(LINK_NAME)
+			@echo "$(GREEN)$(NAME) is linked in $(LINK_NAME)$(NONE)"
+
+echo:
+			@echo "$(YELLOW)Start of Compilation...$(NONE)"
+			@echo "$(PINK)---------------------------$(CYAN)"
+			@echo -n In progress
 
 $(PATH_OBJS)/%.o: $(PATH_SRCS)/%.c $(DEPS)
 			@mkdir $(dir $@) 2> /dev/null || true
@@ -105,15 +113,16 @@ $(PATH_OBJS)/%.o: $(PATH_SRCS)/%.c $(DEPS)
 
 clean:
 			@echo "$(YELLOW)Start of Cleaning...$(NONE)"
-			@echo "$(CYAN)Removing all objects files...$(NONE)"
+			@echo "$(PINK)---------------------------$(NONE)"
+			@echo "$(CYAN)Deleting all objects files...$(NONE)"
 			@/bin/rm -f $(OBJS)
 			@/bin/rm -rf $(PATH_OBJS) 2> /dev/null || true
-			@echo "$(GREEN)Objects is removed !$(NONE)"
+			@echo "$(GREEN)Objects files have been deleted !\n$(NONE)"
 
 fclean:		clean
-			@echo "$(CYAN)Removing all binairy files...$(NONE)"
+			@echo "$(CYAN)Deleting all binary files...$(NONE)"
 			@/bin/rm -f $(LINK_NAME)
 			@/bin/rm -f $(NAME)
-			@echo "$(GREEN)Binairy files is removed !$(NONE)"
+			@echo "$(GREEN)Binary files have been deleted !\n$(NONE)"
 
 re:			fclean all
