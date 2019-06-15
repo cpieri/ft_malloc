@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:28:16 by cpieri            #+#    #+#             */
-/*   Updated: 2019/06/14 16:18:25 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/06/15 14:25:58 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@
 typedef struct			s_block_meta
 {
 	size_t				size;
-	int					free;
+	int					is_free;
 	struct block_meta	*next;
-	void				*adrr;
-
 }						t_block_meta;
 
 /*

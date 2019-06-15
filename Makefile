@@ -6,7 +6,7 @@
 #    By: cpieri <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/10 15:37:21 by cpieri            #+#    #+#              #
-#    Updated: 2019/06/11 16:41:21 by cpieri           ###   ########.fr        #
+#    Updated: 2019/06/15 12:57:34 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ all:		$(NAME)
 $(NAME):	echo $(OBJS)
 			@$(CC) $(SHARED) $(FLAGS) -o $(NAME) $(OBJS)
 			@echo "\n$(GREEN)$(NAME) is ready !$(NONE)"
-			@ln -s $(NAME) $(LINK_NAME)
+			@ln -s $(NAME) $(LINK_NAME) 2> /dev/null || true
 			@echo "$(GREEN)$(NAME) is linked to $(LINK_NAME)$(NONE)"
 
 echo:
