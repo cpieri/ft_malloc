@@ -1,45 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   malloc.h                                           :+:      :+:    :+:   */
+/*   malloc_core.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/10 11:28:16 by cpieri            #+#    #+#             */
-/*   Updated: 2019/10/31 15:28:48 by cpieri           ###   ########.fr       */
+/*   Created: 2019/10/31 14:51:37 by cpieri            #+#    #+#             */
+/*   Updated: 2019/10/31 15:30:56 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MALLOC_H
-# define MALLOC_H
+#ifndef MALLOC_CORE_H
+# define MALLOC_CORE_H
+
+# include <string.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <sys/mman.h>
 
 /*
-**	Includes
+**	Macros for Max Size of Zones
 */
-
-# include "malloc_core.h"
-
-/*
-**	Macros General
-*/
-
+# define ROUNDED_UP	16
+# define TINY_SIZE	9
+# define TINY_MAX	992
+# define SMALL_SIZE	140
+# define SMALL_MAX	14999
 
 /*
 **	Structures
 */
-// typedef struct			s_block_meta
-// {
-// 	size_t				size;
-// 	int					is_free;
-// 	struct block_meta	*next;
-// }						t_block_meta;
+typedef struct			s_block_meta
+{
+	size_t				size;
+	int					is_free;
+	struct block_meta	*next;
+}						t_block_meta;
+
 
 /*
 **	Defination of functions: LibMalloc
 */
-void					free(void *ptr);
-void					show_alloc_mem(void);
-void					*malloc(size_t size);
-void					*realloc(void *ptr, size_t size);
+void	*allocate(size_t size);
+void	*create_and_allocate(size_t size);
 
 #endif

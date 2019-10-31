@@ -6,23 +6,15 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:38:43 by cpieri            #+#    #+#             */
-/*   Updated: 2019/06/15 14:12:40 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/10/31 15:53:20 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "malloc.h"
+#include "malloc.h"
 #include <unistd.h>
 #include <stdio.h>
 
-/*
-**	Global Variable for Malloc.
-*/
-static int		g_malloc_init = 0;
-
-static void		create_zones(void)
-{
-
-}
+int		g_malloc_init = 0;
 
 /*
 **	Malloc is a function that allocates memory and returns a pointer containing
@@ -36,18 +28,25 @@ static void		create_zones(void)
 */
 void			*ft_malloc(size_t size)
 {
-	void	*new_alloc;
+	void	*new_alloc = NULL;
 
 	if (size <= 0)
 		return (NULL);
 	if (g_malloc_init)
 		new_alloc = NULL;
-	create_zones();
+	else
+		new_alloc = create_and_allocate(size);
 	return (new_alloc);
+}
+
+void			*ft_no_malloc(size_t size)
+{
+	(void)size;
+	return (NULL);
 }
 
 int		main(void)
 {
-	ft_malloc(10);
+	ft_malloc(150);
 	return (1);
 }
