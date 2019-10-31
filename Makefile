@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cpieri <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/10 15:37:21 by cpieri            #+#    #+#              #
-#    Updated: 2019/06/15 12:57:34 by cpieri           ###   ########.fr        #
+#    Updated: 2019/11/04 11:38:29 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,10 @@ PATH_INCS	=	includes
 # ***************************************** #
 
 NAME_SRCS	=	malloc.c	\
+				malloc_core.c	\
 				realloc.c	\
 				free.c		\
+				utils.c		\
 				show_alloc_mem.c
 
 NAME_OBJS	=	$(NAME_SRCS:.c=.o)
