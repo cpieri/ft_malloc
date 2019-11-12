@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/10 15:37:21 by cpieri            #+#    #+#              #
-#    Updated: 2019/11/04 11:38:29 by cpieri           ###   ########.fr        #
+#    Updated: 2019/11/12 10:32:42 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,12 +37,13 @@ PATH_INCS	=	includes
 #	Names of Sources, Objects and Includes	#
 # ***************************************** #
 
-NAME_SRCS	=	malloc.c	\
-				malloc_core.c	\
-				realloc.c	\
-				free.c		\
-				utils.c		\
-				show_alloc_mem.c
+NAME_SRCS	=	malloc.c			\
+				realloc.c			\
+				free.c				\
+				show_alloc_mem.c	\
+				shared/utils.c		\
+				shared/heap.c		\
+				shared/block.c
 
 NAME_OBJS	=	$(NAME_SRCS:.c=.o)
 
