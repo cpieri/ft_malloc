@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/10 15:37:21 by cpieri            #+#    #+#              #
-#    Updated: 2019/11/12 10:32:42 by cpieri           ###   ########.fr        #
+#    Updated: 2019/11/14 14:55:32 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ FSANITIZE		=	-fsanitize=address -fno-omit-frame-pointer
 
 override ERROR	+=	-g3
 
-override FLAGS	+=	-Wall -Wextra -Werror
+override FLAGS	+=	-Wall -Wextra -Werror $(ERROR)
 
 
 # ***************************************** #
