@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "malloc.h"
-#include <execinfo.h>
 
 static void		*malloc_core(size_t size)
 {
