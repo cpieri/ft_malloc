@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:03:47 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/20 11:47:14 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 10:31:30 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,21 @@ t_heap			*create_heap(const size_t size)
 	return ((t_heap*)add_to_g_heap(new_heap));
 }
 
+void			print_heap(void)
+{
+	t_heap	*heaps;
+
+	heaps = (t_heap*)g_heap;
+	while (heaps != NULL)
+	{
+		ft_putstr("\033[36mHeap address: \033[0m\033[34m0x");
+		ft_put64hexa((uint64_t)&*heaps);
+		ft_putstr("\033[0m\n");
+		heaps = heaps->next;
+	}
+	ft_putstr("\033[35m---------\033[0m\n");
+}
+
 t_heap			*choose_heap(const size_t size)
 {
 	t_helper_group		hlp;
@@ -91,4 +106,74 @@ t_heap			*choose_heap(const size_t size)
 		heap = heap->next;
 	}
 	return (NULL);
+}
+
+t_heap			*find_heap(const t_block *block)
+{
+	t_block	*tmp_block;
+	t_heap	*heap = NULL;
+
+	tmp_block = (t_block*)block;
+	// print_heap();
+	while (tmp_block->prev != NULL)
+		tmp_block = tmp_block->prev;
+	heap = (t_heap*)((void*)tmp_block - sizeof(t_heap));
+	// ft_putstr("heap find: 0x"), ft_put64hexa((uint64_t)&*heap), ft_putstr("\n");
+	// ft_putstr("print heap total size"), ft_putnbr(heap->total_size), ft_putstr("\n");
+	return (heap);
+}
+
+t_heap			*check_heap_exist(const t_heap *heap)
+{
+	t_heap		*def_heap;
+
+	def_heap = (t_heap*)g_heap;
+	while (def_heap != NULL)
+	{
+		if (def_heap == heap)
+			return (def_heap);
+		def_heap = def_heap->next;
+	}
+	return (NULL);
+}
+
+int				rm_to_g_heap(const t_heap *heap)
+{
+	t_heap	*prev;
+	t_heap	*tmp;
+	t_heap	*next;
+
+	tmp = (t_heap*)g_heap;
+	while (tmp != NULL)
+	{
+		prev = tmp->prev;
+		next = tmp->next;
+		// ft_putstr("tmp heap: 0x"), ft_put64hexa((uint64_t)&*tmp), ft_putstr("\n");
+		// ft_putstr("fnd heap: 0x"), ft_put64hexa((uint64_t)&*heap), ft_putstr("\n");
+		if (tmp == heap)
+		{
+			prev->next = tmp->next;
+			if (next != 0x00)
+				next->prev = prev;
+		}
+		tmp = tmp->next;
+	}
+	return (SUCCESS);
+}
+
+int				destroy_heap(const t_heap *heap)
+{
+	t_heap		*c_heap;
+
+	// ft_putstr("enter in destroy heap\n");
+	if ((c_heap = check_heap_exist(heap)))
+	{
+		// ft_putstr("Heap to delete: 0x"), ft_put64hexa((uint64_t)&*heap), ft_putstr("\n");
+		// print_heap();
+		rm_to_g_heap(heap);
+		// print_heap();
+		if (munmap((t_heap*)heap, heap->total_size) == -1)
+			return (FAILURE);
+	}
+	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:28:16 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/20 11:58:41 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/20 15:25:25 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ t_helper_group			select_helper_group(const size_t size);
 void					print_all_heap(void);
 t_heap					*create_heap(const size_t size);
 t_heap					*choose_heap(const size_t size);
+t_heap					*find_heap(const t_block *block);
+int						destroy_heap(const t_heap *heap);
 
 /*
 **	Defination of functions: Blocks
