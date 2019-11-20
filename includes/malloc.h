@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:28:16 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/20 11:01:34 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/20 11:17:47 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@
 **	Macros General
 */
 # define ROUNDUP				16
-// # define TINY_SIZE_ALLOCATION	((4 * getpagesize()) + (getpagesize() - 1)) & (-getpagesize())
-# define TINY_SIZE_ALLOCATION	(4 * getpagesize())
+# define TINY_SIZE_ALLOCATION	((4 * getpagesize()) + (getpagesize() - 1)) & (-getpagesize())
 # define TINY_BLOCK_SIZE		(TINY_SIZE_ALLOCATION / 128)
-// # define SMALL_SIZE_ALLOCATION	((32 * getpagesize()) + (getpagesize() - 1)) & (-getpagesize())
-# define SMALL_SIZE_ALLOCATION	(32 * getpagesize())
+# define SMALL_SIZE_ALLOCATION	((32 * getpagesize()) + (getpagesize() - 1)) & (-getpagesize())
 # define SMALL_BLOCK_SIZE		(SMALL_SIZE_ALLOCATION / 128)
 # define MMAP_PROT				(PROT_READ | PROT_WRITE)
 # define MMAP_FLAGS				(MAP_PRIVATE | MAP_ANON)
