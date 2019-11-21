@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:28:16 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 14:29:26 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 15:15:19 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct			s_heap
 /*
 **	Global Variable
 */
-static const t_heap		*g_heap = NULL;
+extern t_heap		*g_heap;
 
 /*
 **	Defination of functions: LibMalloc
@@ -106,7 +106,6 @@ t_heap					*find_heap(const t_block *block);
 t_heap					*check_heap_exist(const t_heap *heap);
 t_heap const			*add_to_g_heap(const t_heap *new_heap);
 int						rm_to_g_heap(const t_heap *heap);
-void					print_heap(void);
 t_helper_group			select_helper_group(const size_t size);
 
 /*
