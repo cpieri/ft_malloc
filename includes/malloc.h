@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:28:16 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/20 15:25:25 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 11:24:26 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,15 @@ void					*realloc(void *ptr, size_t size);
 /*
 **	Defination of functions: Heap
 */
-t_helper_group			select_helper_group(const size_t size);
-void					print_all_heap(void);
 t_heap					*create_heap(const size_t size);
+int						destroy_heap(const t_heap *heap);
 t_heap					*choose_heap(const size_t size);
 t_heap					*find_heap(const t_block *block);
-int						destroy_heap(const t_heap *heap);
+t_heap					*check_heap_exist(const t_heap *heap);
+t_heap const			*add_to_g_heap(const t_heap *new_heap);
+int						rm_to_g_heap(const t_heap *heap);
+void					print_heap(void);
+t_helper_group			select_helper_group(const size_t size);
 
 /*
 **	Defination of functions: Blocks
