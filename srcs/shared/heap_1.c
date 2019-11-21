@@ -6,28 +6,11 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:03:47 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 14:22:46 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 14:26:36 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
-
-void			print_heap(void)
-{
-	t_heap	*heaps;
-
-	heaps = (t_heap*)g_heap;
-	if (g_heap == NULL)
-		ft_putstr("G_heap == null\n");
-	while (heaps != NULL)
-	{
-		ft_putstr("\033[36mHeap address: \033[0m\033[34m0x");
-		ft_put64hexa((uint64_t)&*heaps);
-		ft_putstr("\033[0m\n");
-		heaps = heaps->next;
-	}
-	ft_putstr("\033[35m---------\033[0m\n");
-}
 
 t_heap const	*add_to_g_heap(const t_heap *new_heap)
 {

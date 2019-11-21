@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:28:16 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 13:12:10 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 14:29:26 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 **	Includes
 */
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <sys/mman.h>
 
