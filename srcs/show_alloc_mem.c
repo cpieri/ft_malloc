@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:40:55 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 15:31:02 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 16:10:52 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static size_t	print_blocks(t_heap *heap)
 		ft_putstr(" - ");
 		ft_put64hexa((uint64_t)(&(*max)));
 		ft_putstr(" : ");
-		total += blocks->size / 8;
-		ft_putnbr((blocks->size / 8));
+		total += blocks->size;
+		ft_putnbr(blocks->size);
 		ft_putstr(" octets\n");
 		blocks = blocks->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:28:16 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 15:15:19 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 16:08:45 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define TINY_SIZE				(4 * getpagesize())
 # define TINY_SIZE_ALLOCATION	(TINY_SIZE + ALIGN_ZONE)
 # define TINY_BLOCK_SIZE		(TINY_SIZE_ALLOCATION / 128)
-# define SMALL_SIZE				(32 * getpagesize())
+# define SMALL_SIZE				(16 * getpagesize())
 # define SMALL_SIZE_ALLOCATION	(SMALL_SIZE + ALIGN_ZONE)
 # define SMALL_BLOCK_SIZE		(SMALL_SIZE_ALLOCATION / 128)
 # define MMAP_PROT				(PROT_READ | PROT_WRITE)
@@ -95,6 +95,7 @@ void					free(void *ptr);
 void					show_alloc_mem(void);
 void					*malloc(size_t size);
 void					*realloc(void *ptr, size_t size);
+void					*calloc(size_t count, size_t size);
 
 /*
 **	Defination of functions: Heap
