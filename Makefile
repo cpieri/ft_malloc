@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/10 15:37:21 by cpieri            #+#    #+#              #
-#    Updated: 2019/11/20 11:50:58 by cpieri           ###   ########.fr        #
+#    Updated: 2019/11/21 11:23:39 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,9 @@ NAME_SRCS	=	malloc.c				\
 				show_alloc_mem.c		\
 				shared/mini_libft_0.c	\
 				shared/mini_libft_1.c	\
-				shared/heap.c			\
+				shared/helpers.c		\
+				shared/heap_0.c			\
+				shared/heap_1.c			\
 				shared/block.c
 
 NAME_OBJS	=	$(NAME_SRCS:.c=.o)

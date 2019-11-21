@@ -31,6 +31,8 @@ int main()
 	{
 		putnbr(i), putchar('\n');
 		addr = (char*)malloc(1024);
+		if (i % 2 == 0)
+			free(addr);
 		i++;
 	}
 	return (0);
