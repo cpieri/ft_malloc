@@ -6,13 +6,13 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:40:55 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 15:28:57 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 15:31:02 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-static size_t		print_blocks(t_heap *heap)
+static size_t	print_blocks(t_heap *heap)
 {
 	t_block		*blocks;
 	void		*max;
@@ -48,7 +48,7 @@ static void		print_group(t_groups group, void *ptr_heap)
 	ft_putstr("\n");
 }
 
-static size_t		print_heap(t_groups group)
+static size_t	print_heap(t_groups group)
 {
 	t_heap	*heap;
 	size_t	total;
