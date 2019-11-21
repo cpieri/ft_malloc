@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/10 15:37:21 by cpieri            #+#    #+#              #
-#    Updated: 2019/11/21 11:23:39 by cpieri           ###   ########.fr        #
+#    Updated: 2019/11/21 16:07:36 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ PATH_INCS	=	includes
 
 NAME_SRCS	=	malloc.c				\
 				realloc.c				\
+				calloc.c				\
 				free.c					\
 				show_alloc_mem.c		\
 				shared/mini_libft_0.c	\
