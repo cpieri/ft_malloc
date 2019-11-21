@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:19:29 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 11:22:09 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 14:23:02 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,16 @@ int				destroy_heap(const t_heap *heap)
 			return (FAILURE);
 	}
 	return (SUCCESS);
+}
+
+t_heap			*find_heap(const t_block *block)
+{
+	t_block	*tmp_block;
+	t_heap	*heap;
+
+	tmp_block = (t_block*)block;
+	while (tmp_block->prev != NULL)
+		tmp_block = tmp_block->prev;
+	heap = (t_heap*)((void*)tmp_block - sizeof(t_heap));
+	return (heap);
 }

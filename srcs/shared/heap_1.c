@@ -6,11 +6,28 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:03:47 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 11:27:41 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 14:22:46 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
+
+void			print_heap(void)
+{
+	t_heap	*heaps;
+
+	heaps = (t_heap*)g_heap;
+	if (g_heap == NULL)
+		ft_putstr("G_heap == null\n");
+	while (heaps != NULL)
+	{
+		ft_putstr("\033[36mHeap address: \033[0m\033[34m0x");
+		ft_put64hexa((uint64_t)&*heaps);
+		ft_putstr("\033[0m\n");
+		heaps = heaps->next;
+	}
+	ft_putstr("\033[35m---------\033[0m\n");
+}
 
 t_heap const	*add_to_g_heap(const t_heap *new_heap)
 {
@@ -42,7 +59,10 @@ int				rm_to_g_heap(const t_heap *heap)
 		next = tmp->next;
 		if (tmp == heap)
 		{
-			prev->next = tmp->next;
+			if (prev != 0x00)
+				prev->next = tmp->next;
+			else if (prev == 0x00)
+				g_heap = (t_heap*)next;
 			if (next != 0x00)
 				next->prev = prev;
 		}
@@ -67,18 +87,6 @@ t_heap			*choose_heap(const size_t size)
 		heap = heap->next;
 	}
 	return (NULL);
-}
-
-t_heap			*find_heap(const t_block *block)
-{
-	t_block	*tmp_block;
-	t_heap	*heap;
-
-	tmp_block = (t_block*)block;
-	while (tmp_block->prev != NULL)
-		tmp_block = tmp_block->prev;
-	heap = (t_heap*)((void*)tmp_block - sizeof(t_heap));
-	return (heap);
 }
 
 t_heap			*check_heap_exist(const t_heap *heap)

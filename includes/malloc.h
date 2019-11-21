@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:28:16 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 11:24:26 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/21 13:12:10 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ void					ft_putnbr(int n);
 void					ft_putchar(char c);
 void					ft_put64hexa(uint64_t nb);
 void					*ft_memset(void *b, int c, size_t len);
+void					*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif
