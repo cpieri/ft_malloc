@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:03:47 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 15:15:39 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/26 10:57:20 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_heap			*choose_heap(const size_t size)
 	t_helper_group		hlp;
 	t_heap				*heap;
 
+	// ft_putstr("\033[38;5;206m-- Enter in choose_heap --\033[0m\n");
 	heap = (t_heap*)g_heap;
 	hlp = select_helper_group(size);
 	while (heap != NULL)
@@ -68,9 +69,14 @@ t_heap			*choose_heap(const size_t size)
 		if (heap->group == hlp.group
 			&& heap->free_size > (size + sizeof(t_block))
 			&& heap->count < hlp.max)
+		{
+			// ft_putstr("\033[34mHeap selected: \033[36m0x"), ft_put64hexa((uint64_t)&*heap), ft_putstr("\033[0m\n");
+			// ft_putstr("\033[35m-- Out of choose_heap --\033[0m\n");
 			return (heap);
+		}
 		heap = heap->next;
 	}
+	// ft_putstr("\033[35m-- Out of choose_heap --\033[0m\n");
 	return (NULL);
 }
 
@@ -86,4 +92,23 @@ t_heap			*check_heap_exist(const t_heap *heap)
 		def_heap = def_heap->next;
 	}
 	return (NULL);
+}
+
+void			print_all_heap(void)
+{
+	t_heap	*heaps;
+
+	heaps = (t_heap*)g_heap;
+	ft_putstr("\033[38;5;206m-- Enter in print_all_heap --\033[0m\n");
+	ft_putstr("\033[34mSizeof t_heap (hexa): \033[36m"), ft_put64hexa(sizeof(t_heap)), ft_putstr("\033[0m\n");
+	while (heaps != NULL)
+	{
+		ft_putstr("\033[34mHeap address: \033[0m\033[36m0x");
+		ft_put64hexa((uint64_t)&*heaps);
+		ft_putstr(" -> ");
+		ft_put64hexa((uint64_t)&*(void*)((void*)heaps + sizeof(t_heap)));
+		ft_putstr("\033[0m\n");
+		heaps = heaps->next;
+	}
+	ft_putstr("\033[35m-- Out of print_all_heap --\033[0m\n");
 }

@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 11:28:16 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 16:08:45 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/26 10:48:25 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct			s_block
 	size_t				size;
 	t_bool				is_free;
 	void				*ptr;
+	size_t				padding_1;
 }						t_block;
 
 typedef struct			s_heap
@@ -78,9 +79,11 @@ typedef struct			s_heap
 	struct s_heap		*next;
 	t_block				*metadata_block;
 	t_groups			group;
+	uint32_t			padding_0;
 	size_t				total_size;
 	size_t				free_size;
 	size_t				count;
+	size_t				padding_1;
 }						t_heap;
 
 /*
@@ -108,12 +111,14 @@ t_heap					*check_heap_exist(const t_heap *heap);
 t_heap const			*add_to_g_heap(const t_heap *new_heap);
 int						rm_to_g_heap(const t_heap *heap);
 t_helper_group			select_helper_group(const size_t size);
-
+void					print_all_heap(void);
 /*
 **	Defination of functions: Blocks
 */
 void					*choose_block(const size_t size);
 t_block					*add_block(t_heap **heap, const size_t size);
+t_block					*check_if_block_exist(const void *const ptr);
+void					print_all_blocks(void);
 
 /*
 **	Defination of functions: LibFt
