@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/10 11:28:16 by cpieri       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/26 14:17:52 by cpieri      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/26 14:34:19 by cpieri      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,8 +30,8 @@
 # define LARGE_ROUNDUP			getpagesize()
 
 # define BLOCK_NUM_MIN			100
-# define TINY_SIZE_BLOCKS		(1024 + sizeof(t_block))
-# define SMALL_SIZE_BLOCKS		(16384 + sizeof(t_block))
+# define TINY_SIZE_BLOCKS		1024
+# define SMALL_SIZE_BLOCKS		130048
 
 
 # define TINY_BLOCKS_ROUND		((TINY_SIZE_BLOCKS + TINY_ROUNDUP - 1) & ~(TINY_ROUNDUP - 1))
