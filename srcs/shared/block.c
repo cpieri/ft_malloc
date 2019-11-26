@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/12 10:22:29 by cpieri       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/26 11:15:28 by cpieri      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/26 11:25:00 by cpieri      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ t_block		*add_block(t_heap **heap, const size_t size)
 	{
 		block = (t_block*)((void*)*heap + sizeof(t_heap));
 		ptr = (void*)((void*)block + sizeof(t_block));
-		*block = (t_block){NULL, NULL, size, FALSE, ptr, 0};
+		*block = (t_block){NULL, NULL, size, FALSE, 0, ptr, 0};
 		((*heap)->metadata_block) = block;
 		return (block->ptr);
 	}
@@ -57,7 +57,7 @@ t_block		*add_block(t_heap **heap, const size_t size)
 		block = block->next;
 	block->next = (t_block*)((void*)block->ptr + block->size);
 	ptr = (void*)((void*)block->next + sizeof(t_block));
-	*(block->next) = (t_block){block, NULL, size, FALSE, ptr, 0};
+	*(block->next) = (t_block){block, NULL, size, FALSE, 0, ptr, 0};
 	return (block->next->ptr);
 }
 

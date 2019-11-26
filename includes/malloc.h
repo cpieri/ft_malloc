@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/10 11:28:16 by cpieri       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/26 11:14:55 by cpieri      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/26 11:23:56 by cpieri      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,6 +59,7 @@ typedef enum			e_bool
 typedef struct			s_helper_group
 {
 	t_groups			group;
+	uint32_t			padding_0;
 	size_t				max;
 	size_t				alloc_size;
 	size_t				free_size;
@@ -70,6 +71,7 @@ typedef struct			s_block
 	struct s_block		*next;
 	size_t				size;
 	t_bool				is_free;
+	uint32_t			padding_0;
 	void				*ptr;
 	size_t				padding_1;
 }						t_block;

@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/21 14:40:55 by cpieri       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/26 11:15:04 by cpieri      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/26 11:24:40 by cpieri      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ static size_t	print_blocks(t_heap *heap)
 		ft_put64hexa((uint64_t)(&(*max)));
 		ft_putstr(" : ");
 		total += blocks->size;
-		ft_putnbr(blocks->size);
+		ft_putnbr((int)blocks->size);
 		ft_putstr(" octets\n");
 		blocks = blocks->next;
 	}
@@ -77,6 +77,6 @@ void			show_alloc_mem(void)
 	total += print_heap(SMALL);
 	total += print_heap(LARGE);
 	ft_putstr("Total : ");
-	ft_putnbr(total);
+	ft_putnbr((int)total);
 	ft_putstr(" octets\n");
 }

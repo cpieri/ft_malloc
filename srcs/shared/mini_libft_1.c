@@ -6,12 +6,12 @@
 /*   By: cpieri <cpieri@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/20 11:48:09 by cpieri       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/26 11:15:39 by cpieri      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/26 11:22:57 by cpieri      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "malloc.h"
 
 void		*ft_memset(void *b, int c, size_t len)
 {
@@ -22,7 +22,7 @@ void		*ft_memset(void *b, int c, size_t len)
 	s = (unsigned char*)b;
 	while (i != len)
 	{
-		s[i] = c;
+		s[i] = (unsigned char)c;
 		i++;
 	}
 	return (s);
@@ -32,10 +32,10 @@ void		*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t		i;
 	char		*dest;
-	char		*srcs;
+	const char	*srcs;
 
 	dest = (char*)dst;
-	srcs = (char*)src;
+	srcs = (const char*)src;
 	i = 0;
 	while (i != n)
 	{

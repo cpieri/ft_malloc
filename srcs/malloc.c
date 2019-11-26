@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/10 11:38:43 by cpieri       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/26 11:15:12 by cpieri      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/26 11:16:58 by cpieri      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@ static void		*malloc_core(size_t size)
 {
 	void		*ptr;
 
-	size = (size + (ROUNDUP - 1)) & (-ROUNDUP);
+	size = (size + (ROUNDUP - 1)) & (-(size_t)ROUNDUP);
 	if ((ptr = choose_block(size)))
 	{
 		return (ptr);
