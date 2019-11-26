@@ -1,13 +1,14 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/11 16:58:38 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/21 11:25:47 by cpieri           ###   ########.fr       */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   free.c                                           .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: cpieri <cpieri@student.le-101.fr>          +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2019/06/11 16:58:38 by cpieri       #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/26 11:15:07 by cpieri      ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
 
 #include "malloc.h"
@@ -35,8 +36,7 @@ void		free(void *ptr)
 	block = NULL;
 	if (ptr != NULL)
 	{
-		block = (t_block*)(ptr - sizeof(t_block));
-		if (block->ptr != NULL)
+		if ((block = check_if_block_exist(ptr)) != NULL)
 			free_core(block);
 	}
 }

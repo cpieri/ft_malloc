@@ -1,13 +1,14 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   block.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 10:22:29 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/20 11:49:28 by cpieri           ###   ########.fr       */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   block.c                                          .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: cpieri <cpieri@student.le-101.fr>          +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2019/11/12 10:22:29 by cpieri       #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/26 11:25:00 by cpieri      ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
 
 #include "malloc.h"
@@ -21,8 +22,10 @@ void		*choose_block(const size_t size)
 	if ((heap = choose_heap(size)) == NULL)
 		return (NULL);
 	if ((block = heap->metadata_block) == NULL)
+	{
 		return (add_block(&heap, size));
-	while (block->next != NULL)
+	}
+	while (block != NULL)
 	{
 		if (block->is_free == TRUE && block->size == size)
 		{
@@ -45,15 +48,35 @@ t_block		*add_block(t_heap **heap, const size_t size)
 	if (block == NULL)
 	{
 		block = (t_block*)((void*)*heap + sizeof(t_heap));
-		ptr = ((void*)block + sizeof(t_block));
-		*block = (t_block){NULL, NULL, size, FALSE, ptr};
+		ptr = (void*)((void*)block + sizeof(t_block));
+		*block = (t_block){NULL, NULL, size, FALSE, 0, ptr, 0};
 		((*heap)->metadata_block) = block;
 		return (block->ptr);
 	}
 	while (block->next != NULL)
 		block = block->next;
-	block->next = (t_block*)(block->ptr + block->size);
-	ptr = ((void*)block->next + sizeof(t_block));
-	*(block->next) = (t_block){block, NULL, size, FALSE, ptr};
+	block->next = (t_block*)((void*)block->ptr + block->size);
+	ptr = (void*)((void*)block->next + sizeof(t_block));
+	*(block->next) = (t_block){block, NULL, size, FALSE, 0, ptr, 0};
 	return (block->next->ptr);
+}
+
+t_block		*check_if_block_exist(const void *const ptr)
+{
+	t_heap	*heaps;
+	t_block	*blocks;
+
+	heaps = g_heap;
+	while (heaps != NULL)
+	{
+		blocks = heaps->metadata_block;
+		while (blocks != NULL)
+		{
+			if (blocks->ptr == ptr)
+				return (blocks);
+			blocks = blocks->next;
+		}
+		heaps = heaps->next;
+	}
+	return (NULL);
 }
