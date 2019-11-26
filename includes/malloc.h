@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/10 11:28:16 by cpieri       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/26 11:23:56 by cpieri      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/26 14:17:52 by cpieri      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,13 +25,23 @@
 **	Macros General
 */
 # define ROUNDUP				16
-# define ALIGN_ZONE				((getpagesize() - 1)) & (-getpagesize())
-# define TINY_SIZE				(4 * getpagesize())
-# define TINY_SIZE_ALLOCATION	(TINY_SIZE + ALIGN_ZONE)
-# define TINY_BLOCK_SIZE		(TINY_SIZE_ALLOCATION / 128)
-# define SMALL_SIZE				(16 * getpagesize())
-# define SMALL_SIZE_ALLOCATION	(SMALL_SIZE + ALIGN_ZONE)
-# define SMALL_BLOCK_SIZE		(SMALL_SIZE_ALLOCATION / 128)
+# define TINY_ROUNDUP			16
+# define SMALL_ROUNDUP			512
+# define LARGE_ROUNDUP			getpagesize()
+
+# define BLOCK_NUM_MIN			100
+# define TINY_SIZE_BLOCKS		(1024 + sizeof(t_block))
+# define SMALL_SIZE_BLOCKS		(16384 + sizeof(t_block))
+
+
+# define TINY_BLOCKS_ROUND		((TINY_SIZE_BLOCKS + TINY_ROUNDUP - 1) & ~(TINY_ROUNDUP - 1))
+# define TINY_SIZE				(TINY_BLOCKS_ROUND * BLOCK_NUM_MIN)
+# define TINY_SIZE_ALLOCATION	((TINY_SIZE + LARGE_ROUNDUP - 1) & ~(LARGE_ROUNDUP - 1))
+
+# define SMALL_BLOCKS_ROUND		((SMALL_SIZE_BLOCKS + SMALL_ROUNDUP - 1) & ~(SMALL_ROUNDUP - 1))
+# define SMALL_SIZE				(SMALL_BLOCKS_ROUND * BLOCK_NUM_MIN)
+# define SMALL_SIZE_ALLOCATION	((SMALL_SIZE + LARGE_ROUNDUP - 1) & ~(LARGE_ROUNDUP - 1))
+
 # define MMAP_PROT				(PROT_READ | PROT_WRITE)
 # define MMAP_FLAGS				(MAP_PRIVATE | MAP_ANON)
 # define FAILURE				-1
