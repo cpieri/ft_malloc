@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:33:06 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/26 11:05:27 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/26 11:10:01 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	*realloc(void *ptr, size_t size)
 		size = ROUNDUP;
 	if ((block = check_if_block_exist(ptr)) != NULL)
 	{
-
 		if ((new_ptr = malloc(size)) == NULL)
 			return (NULL);
 		new_ptr = ft_memcpy(new_ptr, ptr, block->size);

@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 11:19:29 by cpieri            #+#    #+#             */
-/*   Updated: 2019/11/26 10:57:27 by cpieri           ###   ########.fr       */
+/*   Updated: 2019/11/26 11:07:38 by cpieri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_heap			*create_heap(const size_t size)
 	t_helper_group		hlp;
 	t_heap				*new_heap;
 
-	// ft_putstr("\033[38;5;206m-- Enter in create_heap --\033[0m\n");
 	hlp = select_helper_group(size);
 	new_heap = (t_heap*)mmap(0, hlp.alloc_size, MMAP_PROT, MMAP_FLAGS, -1, 0);
 	if (new_heap == MAP_FAILED)
@@ -30,7 +29,6 @@ t_heap			*create_heap(const size_t size)
 	new_heap->total_size = hlp.alloc_size;
 	new_heap->free_size = hlp.free_size;
 	new_heap->count = 0;
-	// ft_putstr("\033[38;5;206m-- Out of create_heap --\033[0m\n");
 	return ((t_heap*)add_to_g_heap(new_heap));
 }
 

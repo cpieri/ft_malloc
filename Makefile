@@ -6,7 +6,7 @@
 #    By: cpieri <cpieri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/10 15:37:21 by cpieri            #+#    #+#              #
-#    Updated: 2019/11/26 10:09:31 by cpieri           ###   ########.fr        #
+#    Updated: 2019/11/26 11:10:21 by cpieri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,7 @@ PINK	=	\033[38;5;206m
 all:		$(NAME)
 
 $(NAME):	echo $(OBJS)
-			@$(CC) $(SHARED) $(FLAGS) -o $(NAME) $(OBJS) srcs/malloc_debugger.o
+			@$(CC) $(SHARED) $(FLAGS) -o $(NAME) $(OBJS)
 			@echo "\n$(GREEN)$(NAME) is ready !$(NONE)"
 			@ln -s $(NAME) $(LINK_NAME) 2> /dev/null || true
 			@echo "$(GREEN)$(NAME) is linked to $(LINK_NAME)$(NONE)"
