@@ -6,7 +6,7 @@
 /*   By: cpieri <cpieri@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/06/10 11:38:43 by cpieri       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/26 11:16:58 by cpieri      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 14:58:32 by cpieri      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,7 +33,7 @@ void			*malloc(size_t size)
 	void		*ptr;
 
 	if (!size)
-		return (NULL);
+		size = ROUNDUP;
 	if ((ptr = malloc_core(size)) == NULL)
 		return (NULL);
 	ptr = ft_memset(ptr, 0xaa, size);
